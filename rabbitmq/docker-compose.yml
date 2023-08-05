@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+  rabbit:
+    container_name: rabbitmq
+    build:
+      context: ./docker
+    volumes:
+      - ./docker/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - rabbitmq_network
+
+networks:
+  rabbitmq_network:
+    external: true
